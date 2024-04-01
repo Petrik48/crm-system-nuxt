@@ -2,12 +2,11 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
-    "@nuxt/image",
-    "@nuxtjs/tailwindcss",
-    "shadcn-nuxt",
-    "nuxt-icon",
+    '@nuxt/image',
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
     [
-      "@nuxtjs/google-fonts",
+      '@nuxtjs/google-fonts',
       {
         families: {
           Lato: {
@@ -17,9 +16,14 @@ export default defineNuxtConfig({
         },
       },
     ],
+    'nuxt-icon',
+    '@pinia/nuxt',
   ],
   shadcn: {
     prefix: 'Ui',
     componentDir: './components/ui'
+  },
+  pinia: {
+    storesDirs: ['./store/**'],
   }
 })
