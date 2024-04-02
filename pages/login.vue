@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  import { v4 as uuid } from 'uuid'
+
   useSeoMeta({
     title: 'Login | CRM System',
   })
@@ -7,7 +9,35 @@
   const passwordRef = ref('')
   const nameRef = ref('')
 
+  const isLoadingStore = useIsLoadingStore()
+  const authStore = useAuthStore()
+  const router = useRouter()
 
+  const login = async () => {
+    isLoadingStore.set(true)
+
+    await account.createEmailPasswordSession(emailRef.value, passwordRef.value)
+    const response = await account.get()
+    if (response) {
+      authStore.set({
+        email: response.email,
+        name: response.name,
+        status: response.status,
+      })
+    }
+
+    emailRef.value = ''
+    nameRef.value = ''
+    passwordRef.value = ''
+
+    await router.push('/')
+    isLoadingStore.set(false)
+  }
+
+  const register = async () => {
+    await account.create(uuid(), emailRef.value, passwordRef.value, nameRef.value)
+    await login()
+  }
 
 </script>
 
@@ -21,8 +51,8 @@
         <UiInput v-model="emailRef" placeholder="Email" type="email" class="mb-3" />
         <UiInput v-model="passwordRef" placeholder="Password" type="password" class="mb-3" />
         <div class="flex items-center justify-center gap-5">
-          <UiButton type="button">Login</UiButton>
-          <UiButton type="button">Register</UiButton>
+          <UiButton type="button" @click="login">Login</UiButton>
+          <UiButton type="button" @click="register">Register</UiButton>
         </div>
       </form>
     </div>
