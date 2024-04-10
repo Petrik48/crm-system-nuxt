@@ -3,8 +3,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxt/image',
-    '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
+    'nuxt-icon',
+    '@pinia/nuxt',
+    '@nuxt/ui',
     [
       '@nuxtjs/google-fonts',
       {
@@ -16,8 +18,6 @@ export default defineNuxtConfig({
         },
       },
     ],
-    'nuxt-icon',
-    '@pinia/nuxt',
     [
       '@vee-validate/nuxt',
       {
