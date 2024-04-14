@@ -21,8 +21,8 @@
     <UiTable v-else>
       <UiTableHeader>
         <UiTableRow>
-          <UiTableHead class="w-[80px]">Изображение</UiTableHead>
-          <UiTableHead class="w-[200px]">Наименование</UiTableHead>
+          <UiTableHead class="w-[200px]">Изображение</UiTableHead>
+          <UiTableHead class="w-[300px]">Наименование</UiTableHead>
           <UiTableHead class="w-[200px]">Email</UiTableHead>
           <UiTableHead>Откуда пришел</UiTableHead>
         </UiTableRow>
